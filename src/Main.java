@@ -43,7 +43,7 @@ public class Main {
 
 
         GradebookWriter book = new GradebookWriter("/Users/jonathanzier/Dropbox/IdeaProjects/CSE 205 Project 3/src/gradebook.txt");
-        book.writeGradebook(getRoster());
+        book.writeGradeBook(getRoster());
         System.exit(0);
 
     }
@@ -101,7 +101,16 @@ public class Main {
      * of the Student to locate. Call getStudent(pLastName) on the Roster object to get a reference to the Student with
      * that last name. If the student is not located, getStudent() returns null.
      */
-    ???
+    public Student search(String pLastName){
+        if(Roster.getStudent(pLastName) == null){
+            return null;
+        }
+
+        else{
+            return Roster.getStudent(pLastName);
+        }
+
+    }
 
     /**
      * Mutator method for mRoster.
