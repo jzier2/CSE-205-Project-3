@@ -78,7 +78,7 @@ public class Main {
      *     Call readGradebook() on the object
      *     Call setRoster() to save the Roster returned from readGradebook()
      * catch
-     *     Call messageBox() on the View to display "Could not open gradebook.txt for reading. Exiting."
+     *     Call messageBox() on the View to display ""
      *     Call System.exit(-1) to terminate the application with an error code
      *
      *
@@ -87,12 +87,16 @@ public class Main {
 
 
         JFrame.setDefaultLookAndFeelDecorated(true);
-        setView(new View());
+        View view = new View;
+        setView(View);
 
         try {
            GradebookReader book = new GradebookReader("gradebook.txt");
-           book.readGradebook();
-           book.setRoster();
+           setRoster(book.readGradebook());
+        } catch {
+            View.messageBox("Could not open gradebook.txt for reading. Exiting.");
+            System.exit(-1);
+            
         }
     }
 
