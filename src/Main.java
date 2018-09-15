@@ -39,18 +39,16 @@ public class Main {
      *     Call System.exit(-1) to terminate the application with an error code of -1
      */
 
-    try  {
+    public void exit() {
+        try {
+            GradebookWriter book = new GradebookWriter("/Users/jonathanzier/Dropbox/IdeaProjects/CSE 205 Project 3/src/gradebook.txt");
+            book.writeGradeBook(getRoster());
+            System.exit(0);
 
-
-        GradebookWriter book = new GradebookWriter("/Users/jonathanzier/Dropbox/IdeaProjects/CSE 205 Project 3/src/gradebook.txt");
-        book.writeGradeBook(getRoster());
-        System.exit(0);
-
-    }
-
-    catch fileNotFoundException(FileNotFoundException exception){
-        View.messageBox("Could not open gradebook.txt for writing. Exiting without saving.");
+        } catch(FileNotFoundException exception){
+        mView.messageBox("Could not open gradebook.txt for writing. Exiting without saving.");
         System.exit(-1);
+     }
     }
 
     /**
@@ -83,20 +81,15 @@ public class Main {
      *
      *
      */
-    public void run() {
-
-
-        JFrame.setDefaultLookAndFeelDecorated(true);
-        View view = new View;
-        setView(View);
-
+    private void run() {
+        mView = new View(this);
+        setView(mView);
         try {
-           GradebookReader book = new GradebookReader("gradebook.txt");
-           setRoster(book.readGradebook());
-        } catch {
-            View.messageBox("Could not open gradebook.txt for reading. Exiting.");
+            GradebookReader gradebookReader = new GradebookReader("gradebook.txt");
+            setRoster(gradebookReader.readGradebook());
+        } catch (FileNotFoundException fe) {
+            mView.messageBox("Could not open gradebook.txt for reading. Exiting.");
             System.exit(-1);
-            
         }
     }
 
@@ -106,12 +99,13 @@ public class Main {
      * that last name. If the student is not located, getStudent() returns null.
      */
     public Student search(String pLastName){
+        Student student = mRoster.getStudent(pLastName);
         if(Roster.getStudent(pLastName) == null){
             return null;
         }
 
         else{
-            return Roster.getStudent(pLastName);
+            return student;
         }
 
     }
