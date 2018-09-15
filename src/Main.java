@@ -80,8 +80,21 @@ public class Main {
      * catch
      *     Call messageBox() on the View to display "Could not open gradebook.txt for reading. Exiting."
      *     Call System.exit(-1) to terminate the application with an error code
+     *
+     *
      */
-    ???
+    public void run() {
+
+
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        setView(new View());
+
+        try {
+           GradebookReader book = new GradebookReader("gradebook.txt");
+           book.readGradebook();
+           book.setRoster();
+        }
+    }
 
     /**
      * search() is called when the Search button is clicked on the View. The input parameter is the non-empty last name
