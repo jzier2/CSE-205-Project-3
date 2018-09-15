@@ -14,15 +14,19 @@ import java.util.Scanner;
  */
 public class GradebookWriter extends PrintWriter {
 
-    Scanner mIn = new Scanner;
+    Scanner mIn;
+
+
 
     /**
      * GradebookWriter()
      * Call the super class ctor that takes a String.
      */
-    public GradebookWriter(String fileName) throws FileNotFoundException {
+    public GradebookWriter(String fileName, Scanner mIn) throws FileNotFoundException {
         super(fileName);
+        this.mIn = mIn;
     }
+
     /**
      * writeGradebook()
      * Writes the gradebook info to the file, which was opened in the ctor.
@@ -39,6 +43,8 @@ public class GradebookWriter extends PrintWriter {
     public void writeGradeBook(Roster pRoster){
         for(Student student : pRoster.getStudentList() ){
 
+           println(student.toString());
         }
+        close();
     }
 }

@@ -14,6 +14,8 @@ public class Student implements Comparable<Student> {
 
     // Declare the instance variables.
 
+    private
+
 
     /**
      * Student()
