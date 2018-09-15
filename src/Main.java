@@ -39,7 +39,7 @@ public class Main {
      *     Call System.exit(-1) to terminate the application with an error code of -1
      */
 
-    try throws FileNotFoundException {
+    try  {
 
 
         GradebookWriter book = new GradebookWriter("/Users/jonathanzier/Dropbox/IdeaProjects/CSE 205 Project 3/src/gradebook.txt");
